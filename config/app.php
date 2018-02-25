@@ -121,7 +121,11 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    //Log on Heroku
+    'log' => 'errorlog',
+
+    //Log on a local machine
+    //'log' => env('APP_LOG', 'single'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
