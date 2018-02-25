@@ -40,29 +40,13 @@ return [
         ],
 
         //MySql local
-        'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
-
-        //MySql Heroku
         // 'mysql' => [
         //     'driver' => 'mysql',
-        //     'host' => env('DB_HOST', 'db4free.net'),
+        //     'host' => env('DB_HOST', '127.0.0.1'),
         //     'port' => env('DB_PORT', '3306'),
-        //     'database' => env('DB_DATABASE', 'cultureblog'),
-        //     'username' => env('DB_USERNAME', 'markozugic'),
-        //     'password' => env('DB_PASSWORD', 'sql123'),
+        //     'database' => env('DB_DATABASE', 'forge'),
+        //     'username' => env('DB_USERNAME', 'forge'),
+        //     'password' => env('DB_PASSWORD', ''),
         //     'unix_socket' => env('DB_SOCKET', ''),
         //     'charset' => 'utf8mb4',
         //     'collation' => 'utf8mb4_unicode_ci',
@@ -70,6 +54,22 @@ return [
         //     'strict' => true,
         //     'engine' => null,
         // ],
+
+        //MySql Heroku
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'sql11.freemysqlhosting.net'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'sql11223192'),
+            'username' => env('DB_USERNAME', 'sql11223192'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', 'aNFfyrdtll'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
