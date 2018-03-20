@@ -138,7 +138,6 @@ class PostsController extends Controller
 
         if($request->hasFile('cover_image')){
             // Delete previous image for this post
-
             Storage::delete('public/cover_images/'. Post::find($id)->cover_image);
 
             // Get filename with the extension
