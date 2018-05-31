@@ -10,3 +10,5 @@ Route::resource('posts', 'PostsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/pdf/{id}', 'PdfController@generatePdf');
