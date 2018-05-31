@@ -12,7 +12,8 @@ class PdfController extends Controller
     public function generatePdf($id){
         $post = Post::find($id);       
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<p>' . $post->body . '</p>');
+
+        $pdf->loadView('pdf.report',['post' => $post]);
         return $pdf->stream();
     }
 }
