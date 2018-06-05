@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>PDF</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>          
     <h1>{{$client->name}}</h1>   
