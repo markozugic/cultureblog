@@ -32,8 +32,10 @@
           </tr>
         </tbody>
       </table>
-      <hr>
+      @if(!empty($client->client_index))
       <h1>BMI/BMR</h1>
+      @endif
+      <hr>
       @foreach($client->client_index as $index)
       <table class="table">
         <thead>
