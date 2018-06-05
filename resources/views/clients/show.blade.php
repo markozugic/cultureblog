@@ -3,6 +3,7 @@
 @section('content')
     <a href="/clients" class="btn btn-default">Go Back</a>
     <a href="/pdf/{{$client->id}}" class="btn btn-default" target="_blank">Generate pdf</a>
+  <a href="/clients/calculate/{{$client->id}}" class="btn btn-info">Calculate BMI/BMR</a>
     <h1>{{$client->name}}</h1>   
     <hr>
     <small>Created on {{$client->created_at}}</small>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\ClientIndex;
 
 class ClientsController extends Controller
 {
@@ -51,7 +52,7 @@ class ClientsController extends Controller
                         'height'   => $request->input('height'),
                         'weight'   => $request->input('weight'),
                         'activity' => $request->input('activity'),
-                        'gender'   => $request->input('gender') === 'male' ? 1: 2
+                        'gender'   => $request->input('gender')
                         ]);   
             
         $client->save();
@@ -104,4 +105,24 @@ class ClientsController extends Controller
     {
         //
     }
+
+    public function calculate($id)
+    {
+        $client = Client::find($id);
+        $height_in_m = $client->height / 100;
+        $weight = $client->weight;
+        $age = $client->age;
+        $gender = $client->gender;
+
+        $bmi = $weight / ( $height_in_m * $height_in_m) ;
+        $bmr;
+        if($gender === 'male')
+            $bmr = 66.47 + (13.7 * $weight) + (5 + $client->height) - (6.8 * $age);
+        else 
+            $bmr = 655.1 + (9.6 * $weight) + (1.8 + $client->height) - (4.7 * $age);
+
+        $client_index = ClientIndex::create(['bmiIndex' => $bmi, 'bmrIndex' => $bmr, 'client_id' => $id]);
+        $client_index->save();
+    }
+
 }
