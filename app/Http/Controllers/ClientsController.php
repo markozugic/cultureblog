@@ -38,24 +38,20 @@ class ClientsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'age' => 'required',
-            'height' => 'required',
-            'weight' => 'required',
+            'age' => 'required|numeric|digits_between:1,2',
+            'height' => 'required|numeric|digits_between:1,3',
+            'weight' => 'required|numeric|digits_between:1,3',
             'gender' => 'required'
         ]);
-
         $client = Client::create([
                         'name' => $request->input('name'),
+                        'email' => $request->input('name'),
                         'age' => $request->input('age'),
                         'height' => $request->input('height'),
                         'weight' => $request->input('weight'),
                         'activity' => $request->input('activity'),
-                        ]);
-        $gender = $request->input('gender');
-        if($gender === 'male')
-            $client->gender = 1;
-        else
-            $client->gender = 2;
+                        'gender' => $request->input('gender') === 'male' ? 1 : 2
+                        ]);   
             
         $client->save();
         return redirect('/clients')->with('success', 'Client created');
