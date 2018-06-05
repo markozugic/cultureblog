@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>PDF</title>
-  </head>
-  <body>          
+@extends('layouts.app')
+
+@section('content')
+    <a href="/clients" class="btn btn-default">Go Back</a>
+    <a href="/pdf/{{$client->id}}" class="btn btn-default" target="_blank">Generate pdf</a>
     <h1>{{$client->name}}</h1>   
     <hr>
     <small>Created on {{$client->created_at}}</small>
@@ -33,5 +31,7 @@
           </tr>
         </tbody>
       </table>
-  </body>
-</html>
+@endsection
+
+
+

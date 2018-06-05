@@ -8,7 +8,7 @@
             <div class="well">
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
-                        <h3><a href="/posts/{{$client->id}}">{{$client->name}}</a></h3>
+                        <h3><a href="/clients/{{$client->id}}">{{$client->name}}</a></h3>
                         <small>Joined on {{$client->created_at}}</small>
                     </div>
                 </div>        

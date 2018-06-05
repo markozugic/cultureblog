@@ -14,8 +14,9 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::orderBy('created_at', 'desc')->paginate(10);
-        return view('clients.index')->with('clients', $clients);
+        $clients                    = Client::orderBy('created_at', 'desc')->paginate(10);
+        return view('clients.index')
+                                ->with('clients', $clients);
     }
 
     /**
@@ -37,20 +38,20 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'age' => 'required|numeric|digits_between:1,2',
-            'height' => 'required|numeric|digits_between:1,3',
-            'weight' => 'required|numeric|digits_between:1,3',
-            'gender' => 'required'
+            'name'                 => 'required',
+            'age'                  => 'required|numeric|digits_between:1,2',
+            'height'               => 'required|numeric|digits_between:1,3',
+            'weight'               => 'required|numeric|digits_between:1,3',
+            'gender'               => 'required'
         ]);
-        $client = Client::create([
-                        'name' => $request->input('name'),
-                        'email' => $request->input('name'),
-                        'age' => $request->input('age'),
-                        'height' => $request->input('height'),
-                        'weight' => $request->input('weight'),
+        $client                     = Client::create([
+                        'name'     => $request->input('name'),
+                        'email'    => $request->input('name'),
+                        'age'      => $request->input('age'),
+                        'height'   => $request->input('height'),
+                        'weight'   => $request->input('weight'),
                         'activity' => $request->input('activity'),
-                        'gender' => $request->input('gender') === 'male' ? 1 : 2
+                        'gender'   => $request->input('gender') === 'male' ? 1: 2
                         ]);   
             
         $client->save();
@@ -66,7 +67,8 @@ class ClientsController extends Controller
      */
     public function show($id)
     {
-        //
+        $client                     = Client::find($id);
+        return view('clients.show')->with('client', $client);
     }
 
     /**
