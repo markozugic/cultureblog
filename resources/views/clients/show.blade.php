@@ -32,6 +32,28 @@
           </tr>
         </tbody>
       </table>
+      <hr>
+      <h1>BMI/BMR</h1>
+      @foreach($client->client_index as $index)
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">BMI</th>
+            <th scope="col">BMR</th>
+            <th scope="col">Date measured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <th scope="row">{{$index->id}}</th>
+            <td>{{$index->bmiIndex}}</td>
+            <td>{{$index->bmrIndex}}</td>
+            <td>{{$index->created_at}}</td>
+          </tr>
+        </tbody>
+      </table>
+      @endforeach
 @endsection
 
 

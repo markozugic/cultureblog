@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Client;
 use App\ClientIndex;
+use Carbon\Carbon;
 
 class ClientsController extends Controller
 {
@@ -108,21 +109,27 @@ class ClientsController extends Controller
 
     public function calculate($id)
     {
-        $client = Client::find($id);
-        $height_in_m = $client->height / 100;
-        $weight = $client->weight;
-        $age = $client->age;
-        $gender = $client->gender;
+        $date_measured = ClientIndex::where('client_id', $id)->get()->last()->created_at;
+        $diff_in_months = Carbon::now()->diffInMonths($date_measured);
+        if($diff_in_months === 0)
+            return redirect('clients/' . $id)->with('error', 'One measure per month is avaliable');
 
-        $bmi = $weight / ( $height_in_m * $height_in_m) ;
+        $client       = Client::find($id);
+        $height_in_m  = $client->height / 100;
+        $weight       = $client->weight;
+        $age          = $client->age;
+        $gender       = $client->gender;
+
+        $bmi          = $weight / ( $height_in_m * $height_in_m) ;
         $bmr;
-        if($gender === 'male')
-            $bmr = 66.47 + (13.7 * $weight) + (5 + $client->height) - (6.8 * $age);
+        if($gender    === 'male')
+            $bmr      = 66.47 + (13.7 * $weight) + (5 + $client->height) - (6.8 * $age);
         else 
-            $bmr = 655.1 + (9.6 * $weight) + (1.8 + $client->height) - (4.7 * $age);
+            $bmr      = 655.1 + (9.6 * $weight) + (1.8 + $client->height) - (4.7 * $age);
 
         $client_index = ClientIndex::create(['bmiIndex' => $bmi, 'bmrIndex' => $bmr, 'client_id' => $id]);
         $client_index->save();
+        return view('clients.show')->with('client', $client);
     }
 
 }

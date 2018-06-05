@@ -19,7 +19,7 @@ class Client extends Model
      //Timestamps
      public $timestamps = true;
 
-    public function clientIndex(){
+    public function client_index(){
         return $this->hasMany('App\ClientIndex');
     }
 

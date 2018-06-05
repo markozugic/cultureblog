@@ -21,18 +21,6 @@
             {!! Form::close() !!}
         @endif
     @endif
-    <a class="btn btn-info" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}"
-        target="_blank">
-        Share on Facebook
-    </a>
-    <a class="btn btn-success" href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}"
-        target="_blank">
-        Share on Twitter
-    </a>
-    <a class="btn btn-danger" href="https://plus.google.com/share?url={{ urlencode(Request::fullUrl()) }}"
-        target="_blank">
-        Share on Google
-    </a>
 @endsection
 
 
