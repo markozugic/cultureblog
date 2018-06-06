@@ -8,7 +8,7 @@
   <body>          
     <h1>{{$client->name}}</h1>   
     <hr>
-    <small>Joined on {{$client->created_at}}</small>
+    <small>Created at {{$client->created_at}}</small>
     <hr>
     <table class="table">
         <thead>
