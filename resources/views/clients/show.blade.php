@@ -6,12 +6,11 @@
   <a href="/clients/calculate/{{$client->id}}" class="btn btn-info">Calculate BMI/BMR</a>
     <h1>{{$client->name}}</h1>   
     <hr>
-    <small>Created on {{$client->created_at}}</small>
+    <small>Joined on {{$client->created_at}}</small>
     <hr>
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
             <th scope="col">Height</th>
@@ -22,7 +21,6 @@
         </thead>
         <tbody>
           <tr>
-          <th scope="row">{{$client->id}}</th>
             <td>{{$client->name}}</td>
             <td>{{$client->age}}</td>
             <td>{{$client->height}}</td>
@@ -32,24 +30,19 @@
           </tr>
         </tbody>
       </table>
-      @if(!empty($client->client_index))
-      <h1>BMI/BMR</h1>
-      @endif
       <hr>
       @foreach($client->client_index as $index)
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">BMI</th>
-            <th scope="col">BMR</th>
-            <th scope="col">Date measured</th>
+          <th scope="col">BMI</th>
+          <th scope="col">BMR</th>
+          <th scope="col">Date measured</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-          <th scope="row">{{$index->id}}</th>
-            <td>{{$index->bmiIndex}}</td>
+            <td style="color: {{$index->status}}">{{$index->bmiIndex}}</td>
             <td>{{$index->bmrIndex}}</td>
             <td>{{$index->created_at}}</td>
           </tr>
