@@ -8,7 +8,7 @@ class ClientIndex extends Model
 {
 
     protected $fillable = [
-        'bmiIndex', 'bmrIndex', 'client_id'
+        'bmiIndex', 'bmrIndex', 'client_id', 'status'
     ];
 
      //Table name 
