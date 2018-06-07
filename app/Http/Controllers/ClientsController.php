@@ -109,7 +109,7 @@ class ClientsController extends Controller
 
     public function calculate($id)
     {
-        $previous_client_index = ClientIndex::where('client_id', $id)->get();;
+        $previous_client_index = ClientIndex::where('client_id', $id)->get();
         if($this->validatePreviousIndex($previous_client_index)){
             return redirect('clients/' . $id)->with('error', 'One measure per month is avaliable');
         }
