@@ -39,21 +39,14 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'                 => 'required',
-            'age'                  => 'required|numeric|digits_between:1,2',
-            'height'               => 'required|numeric|digits_between:1,3',
-            'weight'               => 'required|numeric|digits_between:1,3',
-            'gender'               => 'required'
+            'name'   => 'required',
+            'age'    => 'required|numeric|digits_between:1,2',
+            'height' => 'required|numeric|digits_between:1,3',
+            'weight' => 'required|numeric|digits_between:1,3',
+            'gender' => 'required'
         ]);
-        $client                     = Client::create([
-                        'name'     => $request->input('name'),
-                        'email'    => $request->input('name'),
-                        'age'      => $request->input('age'),
-                        'height'   => $request->input('height'),
-                        'weight'   => $request->input('weight'),
-                        'activity' => $request->input('activity'),
-                        'gender'   => $request->input('gender')
-                        ]);   
+
+        $client       = Client::create(request(['name','email','age','height','weight', 'activity',  'gender']));   
             
         $client->save();
         return redirect('/clients')->with('success', 'Client created');
